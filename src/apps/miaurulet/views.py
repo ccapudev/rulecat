@@ -14,12 +14,16 @@ class RuletaView(APIView):
 
     def get(self, request):
         from random import randint
-        spin = list()
-        for spin_index in range(5):
-            spin.append([
-                SPIN_VALUES[randint(0, 5)][0],
-                SPIN_VALUES[randint(0, 5)][0],
-                SPIN_VALUES[randint(0, 5)][0],
-            ])
-        SpinResult(resultado=str(spin))
-        return Response(spin)
+        if request.GET.get('spin'):
+            spin = list()
+            for spin_index in range(5):
+                spin.append([
+                    SPIN_VALUES[randint(0, 5)][0],
+                    SPIN_VALUES[randint(0, 5)][0],
+                    SPIN_VALUES[randint(0, 5)][0],
+                ])
+            SpinResult(resultado=str(spin))
+            return Response(spin)
+        return render(
+            request, 'web/home.html'
+        )

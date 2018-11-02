@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>RuleCat</title>
+  <style>
+    .spin-row{
+      display: inline-block;
+      margin: 2px;
+    }
+  </style>
+</head>
+<body>
+  <div id="mainapp">
+    <div v-for="r in ruleta" class="spin-row">
+      <div v-for="x in r">
+        <img :src="'https://via.placeholder.com/100.png?text='+x">
+      </div>
+    </div>
+    <div>
+      <button @click="rodar">Spin</button>
+    </div>
+  </div>
+  <script src="{% static 'js/vue.js' %}"></script>
+  <script src="{% static 'js/axios@0.18.0.js' %}"></script>
+  <script src="{% static 'js/home.js' %}"></script>
+</body>
+</html>
